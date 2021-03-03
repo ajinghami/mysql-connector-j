@@ -29,6 +29,8 @@
 
 package com.mysql.cj.protocol;
 
+import java.time.YearMonth;
+
 public class InternalDate {
 
     protected int year = 0;
@@ -73,5 +75,28 @@ public class InternalDate {
 
     public boolean isZero() {
         return this.year == 0 && this.month == 0 && this.day == 0;
+    }
+
+    public boolean isInvalid() {
+        if (this.month == 0 || this.month > 12) {
+            return true;
+        }
+        if (this.day == 0) {
+            return true;
+        }
+        YearMonth ym = YearMonth.of(this.year, this.month);
+        return !ym.isValidDay(day);
+    }
+
+    public InternalDate roundedDate() {
+        int year = this.year;
+        int month = this.month == 0 ? 1: this.month;
+        int day = this.day = this.day == 0 ? 1 : this.day;
+        YearMonth ym = YearMonth.of(year, month);
+        if (!ym.isValidDay(day)) {
+            day = ym.lengthOfMonth();
+        }
+
+        return new InternalDate(year, month, day);
     }
 }

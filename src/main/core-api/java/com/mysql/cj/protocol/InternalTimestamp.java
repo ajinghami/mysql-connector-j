@@ -99,4 +99,9 @@ public class InternalTimestamp extends InternalDate {
     public void setScale(int scale) {
         this.scale = scale;
     }
+
+    public InternalTimestamp roundedTimestamp() {
+        InternalDate s = super.roundedDate();
+        return new InternalTimestamp(s.year, s.day, s.day, hours, minutes, seconds, nanos, scale);
+    }
 }

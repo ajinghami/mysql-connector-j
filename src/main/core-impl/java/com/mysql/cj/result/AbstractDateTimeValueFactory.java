@@ -66,6 +66,9 @@ public abstract class AbstractDateTimeValueFactory<T> extends DefaultValueFactor
                     break;
             }
         }
+        if (idate.isInvalid()) {
+            return localCreateFromDate(idate.roundedDate());
+        }
         return localCreateFromDate(idate);
     }
 
@@ -86,6 +89,9 @@ public abstract class AbstractDateTimeValueFactory<T> extends DefaultValueFactor
                     break;
             }
         }
+        if (its.isInvalid()) {
+            return localCreateFromTimestamp(its.roundedTimestamp());
+        }
         return localCreateFromTimestamp(its);
     }
 
@@ -100,6 +106,9 @@ public abstract class AbstractDateTimeValueFactory<T> extends DefaultValueFactor
                 default:
                     break;
             }
+        }
+        if (its.isInvalid()) {
+            return localCreateFromDatetime(its.roundedTimestamp());
         }
         return localCreateFromDatetime(its);
     }
