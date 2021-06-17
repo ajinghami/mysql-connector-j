@@ -78,6 +78,10 @@ public class InternalDate {
     }
 
     public boolean isInvalid() {
+        // Apparently 0 year is not allowed and will blow up further up the stack
+        if (this.year <= 0 && !isZero()) {
+            return true;
+        }
         if (this.month == 0 || this.month > 12) {
             return true;
         }
@@ -89,7 +93,7 @@ public class InternalDate {
     }
 
     public InternalDate roundedDate() {
-        int year = this.year;
+        int year = Math.max(this.year, 1);
         int month = this.month == 0 ? 1: this.month;
         int day = this.day = this.day == 0 ? 1 : this.day;
         YearMonth ym = YearMonth.of(year, month);
