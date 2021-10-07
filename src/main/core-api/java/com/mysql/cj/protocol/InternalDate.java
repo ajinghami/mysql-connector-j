@@ -94,7 +94,7 @@ public class InternalDate {
 
     public InternalDate roundedDate() {
         int year = Math.max(this.year, 1);
-        int month = this.month == 0 ? 1: this.month;
+        int month = Math.min(this.month == 0 ? 1: this.month, 12);
         int day = this.day = this.day == 0 ? 1 : this.day;
         YearMonth ym = YearMonth.of(year, month);
         if (!ym.isValidDay(day)) {
