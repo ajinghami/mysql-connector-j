@@ -193,7 +193,7 @@ public class SqlTimestampValueFactory extends AbstractDateTimeValueFactory<Times
                 ts.setNanos(its.getNanos());
                 return ts;
             } catch (IllegalArgumentException e) {
-                throw ExceptionFactory.createException(WrongArgumentException.class, e.getMessage(), e);
+                throw ExceptionFactory.createException(WrongArgumentException.class, e.getMessage() + ": " + its, e);
             }
         }
     }

@@ -104,4 +104,18 @@ public class InternalTimestamp extends InternalDate {
         InternalDate s = super.roundedDate();
         return new InternalTimestamp(s.year, s.day, s.day, hours, minutes, seconds, nanos, scale);
     }
+
+    @Override
+    public String toString() {
+        return "InternalTimestamp{" +
+                "year=" + year +
+                ", month=" + month +
+                ", day=" + day +
+                ", hours=" + hours +
+                ", minutes=" + minutes +
+                ", seconds=" + seconds +
+                ", nanos=" + nanos +
+                ", scale=" + scale +
+                '}';
+    }
 }

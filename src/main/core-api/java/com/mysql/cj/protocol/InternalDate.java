@@ -103,4 +103,13 @@ public class InternalDate {
 
         return new InternalDate(year, month, day);
     }
+
+    @Override
+    public String toString() {
+        return "InternalDate{" +
+                "year=" + year +
+                ", month=" + month +
+                ", day=" + day +
+                '}';
+    }
 }
