@@ -102,7 +102,7 @@ public class InternalTimestamp extends InternalDate {
 
     public InternalTimestamp roundedTimestamp() {
         InternalDate s = super.roundedDate();
-        return new InternalTimestamp(s.year, s.day, s.day, hours, minutes, seconds, nanos, scale);
+        return new InternalTimestamp(s.year, s.month, s.day, hours, minutes, seconds, nanos, scale);
     }
 
     @Override
